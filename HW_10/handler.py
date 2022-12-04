@@ -13,7 +13,7 @@ def command_handler(func):
         except KeyError as e:
             return str(e)
         except Exception:
-            raise SystemExit('Good bye!')
+            raise SystemExit('Something is wrong, goodbye!')
 
     return wrapper
 

@@ -45,8 +45,13 @@ class Record:
         except ValueError:
             return f'{old_number} does not exist'
 
-    def delete_phone(self, phone: Phone):
-        try:
-            self.phones.remove(phone)
-        except ValueError:
-            return f'{phone} does not exist'
+    def delete_phone(self, old_phone: Phone):
+        for phone in self.phones:
+            if phone.value == old_phone:
+                self.phones.remove(phone)
+            else:
+                print(f"\nPhone number: {phone} doesn't exist")
+        # try:
+        #     self.phones.remove(phone)
+        # except ValueError:
+        #     return f'{phone} does not exist'
