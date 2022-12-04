@@ -41,12 +41,13 @@ def add_handler(user_name: str, phone_number: str):
 @command_handler
 def change_handler(user_name: str, phone_number: str):
     name = Name(user_name)
-    phone = Phone(phone_number)
+    new_phone = Phone(phone_number)
 
     if name.value in dict_phones:
+        old_phone = input('Enter phone number to change: ')
         record = dict_phones.data[name.value]
-        record.change_phone(record.phones[0], phone)
-        return f'For contact {name} phone number was changed to {phone}'
+        record.change_phone(old_phone, new_phone)
+        return f'For contact {name} phone number was changed from {old_phone} to {new_phone}'
     raise KeyError('Contact does not exists!')
 
 

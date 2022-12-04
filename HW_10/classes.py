@@ -40,8 +40,8 @@ class Record:
 
     def change_phone(self, old_number: Phone, new_number: Phone):
         try:
-            self.phones.remove(old_number)
-            self.phones.append(new_number)
+            self.delete_phone(old_number)
+            self.add_phone(new_number)
         except ValueError:
             return f'{old_number} does not exist'
 
