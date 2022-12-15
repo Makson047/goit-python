@@ -4,8 +4,15 @@ from datetime import datetime
 
 class Field:
     def __init__(self, value: str):
-        self.__value = None
-        self.value = value
+        self.__value = value
+
+    @property
+    def value(self):
+        return self.__value
+
+    @value.setter
+    def value(self, value):
+        self.__value = value
 
     def __repr__(self):
         return self.value
@@ -16,11 +23,7 @@ class Name(Field):
 
 
 class Phone(Field):
-    @property
-    def value(self):
-        return self.__value
-
-    @value.setter
+    @Field.value.setter
     def value(self, value: str):
         if not all((value.startswith('+'), len(value) == 13, value[1:].isdigit())):
             raise ValueError("Please, enter the phone number in format: '+380111111111'")
@@ -28,18 +31,10 @@ class Phone(Field):
 
 
 class Birthday(Field):
-    def __init__(self, value):
-        self.__value = None
-        self.value = value
-
     def __str__(self) -> str:
         return datetime.strftime(self.__value, '%d.%m.%Y')
 
-    @property
-    def value(self):
-        return self.__value
-
-    @value.setter
+    @Field.value.setter
     def value(self, value):
         try:
             date_birthday = datetime.strptime(value, '%d.%m.%Y')
@@ -95,11 +90,12 @@ class Record:
 
     def days_to_birthday(self):
         if self.birthday:
-            today = datetime.now().date()
-            if self.birthday.value.replace(year=today.year) >= today:
-                result = (self.birthday.value.replace(year=today.year) - today).days
+            today = datetime.now()
+            bday = datetime.strptime(self.birthday.value, '%d.%m.%Y').replace(year=today.year)
+            if bday > today:
+                result = (bday - today).days
             else:
-                result = (self.birthday.value.replace(year=today.year + 1) - today).days
+                result = (bday.replace(year=today.year + 1) - today).days
             return result
         else:
             return "If you want to know which days left to contact's birthday, then use command: 'set birthday' "
