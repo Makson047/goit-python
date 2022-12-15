@@ -64,11 +64,6 @@ def show_all_handler(*args):
     num_of_records = int(input('How many records we need: '))
     page = dict_phones.iterator(page_number, num_of_records)
     return 'Contacts book: \n' + f'{next(page)}'
-    # contacts = ''
-    # for name, record in dict_phones.items():
-    #     contacts += '\n' + name + ' number is: ' + ', '.join([phone.value for phone in record.phones])
-    # contacts_response = 'Contacts does not exists yet!' if contacts == '' else contacts
-    # return 'Contacts book: \n' + contacts_response
 
 
 @command_handler

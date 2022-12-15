@@ -23,8 +23,6 @@ def add_parser(user_command: str):
     user_name, phone_number = args.strip().split(' ')
     if user_name == '':
         raise ValueError('Bad input name!')
-    # elif not correct_phone(phone_number):
-    #     raise ValueError('Bad input phone number!')
     else:
         return 'add', [user_name, phone_number]
 
@@ -34,8 +32,6 @@ def change_parser(user_command: str):
     user_name, new_phone_number = args.strip().split(' ')
     if user_name == '':
         raise ValueError('Bad input name!')
-    # elif not correct_phone(phone_number):
-    #     raise ValueError('Bad input phone number!')
     else:
         return 'change', [user_name, new_phone_number]
 
@@ -91,18 +87,6 @@ command_parser = {
     "close": close_parser,
     "exit": close_parser
 }
-
-
-# def correct_phone(phone):
-#     if len(phone) < 10 or len(phone) > 17:
-#         print('Phone must be 10-17 characters without letters')
-#         return False
-#     for i in phone[0]:
-#         if i in ascii_letters:
-#             print('Phone must be 10-17 characters without letters')
-#             return False
-#
-#     return True
 
 
 @parser_handler

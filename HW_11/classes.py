@@ -89,10 +89,6 @@ class Record:
                     self.phones.remove(phone)
             except ValueError:
                 print(f"\nPhone number: {phone} doesn't exist")
-        # try:
-        #     self.phones.remove(phone)
-        # except ValueError:
-        #     return f'{phone} does not exist'
 
     def add_birthday(self, birthday : Birthday):
         self.birthday = birthday
