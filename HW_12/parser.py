@@ -54,7 +54,7 @@ def show_all_parser(user_command: str):
 def find_contact_parser(user_command: str):
     text_for_search = user_command.strip().lstrip('find ')
     if text_for_search == '':
-        raise ValueError('Bad input name!')
+        raise ValueError('Bad input name!Error!')
     else:
         return 'find', [text_for_search]
 
