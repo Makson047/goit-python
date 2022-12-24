@@ -63,7 +63,7 @@ def set_birthday_parser(user_command: str):
     args = user_command.lstrip('set birthday ')
     user_name, birthday = args.strip().split(' ')
     if user_name == '':
-        raise ValueError('Bad input name!')
+        raise ValueError('Bad input name!Error!')
     else:
         return 'set birthday', [user_name, birthday]
 
